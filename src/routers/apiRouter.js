@@ -17,10 +17,18 @@ router.get('/persons', (req, res, next) => {
 //Get request for specific person
 router.get('/persons/:id', (req, res, next) => {
   try {
+    //Get id param and check validity
     const id = Number(req.params.id);
     if (!id || typeof id != 'number') throw errorCodes.idParamInvalid;
+    //Find person with same id
     const person = db.persons.find((p) => p.id === id);
+    //Throw error if person not found
+    if (!person) throw errorCodes.personNotFound;
+    //Return found person in pretty way
+    res.header('Content-Type', 'application/json');
+    res.send(JSON.stringify(person, null, 4));
   } catch (error) {
+    console.log('!!!');
     next(error);
   }
 });

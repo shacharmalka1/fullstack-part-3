@@ -1,8 +1,6 @@
 const errorCodes = require('../constants/errorCodes');
-const express = require('express');
-const router = express.Router();
 
-router.use((req, res, next, err) => {
+const errorHandler = (err, req, res, next) => {
   //Get error and check what type it is, send response to client
   console.log('An error has occured');
   switch (err.message) {
@@ -11,9 +9,10 @@ router.use((req, res, next, err) => {
       break;
     case errorCodes.personNotFound:
       res.status(404).json({ message: errorCodes.personNotFound });
+      break;
     default:
       res.status(500).json({ message: err.message });
   }
-});
+};
 
-module.exports = router;
+module.exports = errorHandler;

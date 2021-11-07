@@ -32,11 +32,15 @@ router.delete('/persons/:id', (req, res) => {
 });
 
 router.post('/persons/', (req, res) => {
+  //Generate new unique ID
   const newID = generateRandomID();
+  //Extract name and number and check validity
   const { name, number } = req.body;
   if (!name || !number) throw errorCodes.nameOrNumberMissing;
+  //Check name is unique
   const nameExists = valueExistsInPersons('name', name);
   if (nameExists) throw errorCodes.nameMustBeUnique;
+  //Create new person and send successmessage
   const person = { id: newID, name, number };
   db.persons.push(person);
   res.send(`Person was added with id ${newID}`);

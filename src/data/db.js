@@ -1,3 +1,5 @@
+// Mock db file, contains all data
+
 let persons = [
   {
     id: 1,

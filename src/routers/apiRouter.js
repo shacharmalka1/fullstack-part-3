@@ -26,7 +26,9 @@ let persons = [
 
 router.get('/persons', (req, res, next) => {
   try {
-    res.json(persons);
+    //Send persons in pretty way
+    res.header('Content-Type', 'application/json');
+    res.send(JSON.stringify(persons, null, 4));
   } catch (error) {
     next(error);
   }

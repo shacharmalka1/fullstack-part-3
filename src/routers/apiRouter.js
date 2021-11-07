@@ -28,7 +28,6 @@ router.get('/persons/:id', (req, res, next) => {
     res.header('Content-Type', 'application/json');
     res.send(JSON.stringify(person, null, 4));
   } catch (error) {
-    console.log('!!!');
     next(error);
   }
 });

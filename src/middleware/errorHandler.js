@@ -2,7 +2,6 @@ const errorCodes = require('../constants/errorCodes');
 
 const errorHandler = (err, req, res, next) => {
   //Get error and check what type it is, send response to client
-  console.log('An error has occured');
   switch (err) {
     case errorCodes.idParamInvalid:
       res.status(400).json({ error: errorCodes.idParamInvalid });
@@ -15,6 +14,7 @@ const errorHandler = (err, req, res, next) => {
       break;
     case errorCodes.nameMustBeUnique:
       res.status(400).json({ error: errorCodes.nameMustBeUnique });
+      break;
     default:
       res.status(500).json({ error: err.message });
   }

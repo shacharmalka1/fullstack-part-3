@@ -3,15 +3,20 @@ const db = require('../data/db');
 const router = express.Router();
 
 router.get('', (req, res, next) => {
-  try {
-    // Send back amount of numbers in phonebook with curr date
-    const phonebookText = `Phonebook has info for ${db.persons.length} people <br/><br/>`; // <br/> for indentation
-    const time = new Date();
-    const response = phonebookText + time;
-    res.send(response);
-  } catch (error) {
-    next(error);
-  }
+  // Send back new page with amount of numbers in phonebook with curr date
+  const phonebookText = `Phonebook has info for ${db.persons.length} people`; // <br/> for indentation
+  const time = new Date();
+  const response = `
+    <html>
+        <body>
+            <h1>
+                ${phonebookText}
+                <p>${time}</p>
+            </h1>
+        </body>
+    </html>
+      `;
+  res.send(response);
 });
 
 module.exports = router;

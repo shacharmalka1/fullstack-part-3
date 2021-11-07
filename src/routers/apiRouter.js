@@ -4,14 +4,14 @@ const db = require('../data/db');
 const router = express.Router();
 
 //Get request for all people
-router.get('/persons', (req, res, next) => {
+router.get('/persons', (req, res) => {
   //Send persons in pretty way
   res.header('Content-Type', 'application/json');
   res.send(JSON.stringify(db.persons, null, 4));
 });
 
 //Get request for specific person
-router.get('/persons/:id', (req, res, next) => {
+router.get('/persons/:id', (req, res) => {
   //Get id param and check validity
   const id = Number(req.params.id);
   if (!id || typeof id != 'number') throw errorCodes.idParamInvalid;
@@ -21,7 +21,7 @@ router.get('/persons/:id', (req, res, next) => {
   res.send(JSON.stringify(person, null, 4));
 });
 
-router.delete('/persons/:id', (req, res, next) => {
+router.delete('/persons/:id', (req, res) => {
   //Get id param and check validity
   const id = Number(req.params.id);
   if (!id || typeof id != 'number') throw errorCodes.idParamInvalid;
@@ -31,7 +31,7 @@ router.delete('/persons/:id', (req, res, next) => {
   res.send(`Person with id: ${id} succesfully deleted`);
 });
 
-router.post('/persons/', (req, res, next) => {});
+router.post('/persons/', (req, res) => {});
 
 function getPersonByID(id) {
   //Find person with same id

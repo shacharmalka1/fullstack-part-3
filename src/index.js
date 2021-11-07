@@ -10,7 +10,6 @@ const port = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 app.use(express.json());
-
 //Morgan config
 //Log with tiny config every request other than POST
 app.use(
@@ -32,13 +31,12 @@ app.use(
     }
   )
 );
-
 //Api Path
 app.use('/api', apiRouter);
 app.use('/info', infoRouter);
-
 //Setup error handler
 app.use(errorHandler);
+//Listen
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });

@@ -1,6 +1,6 @@
 // Mock db file, contains all data
 
-let persons = [
+const persons = [
   {
     id: 1,
     name: 'Arto Hellas',

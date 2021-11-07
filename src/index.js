@@ -12,13 +12,27 @@ app.use(cors());
 app.use(express.json());
 
 //Morgan config
-// app.use(morgan('tiny'));
+//Log with tiny config every request other than POST
+app.use(
+  morgan('tiny', {
+    skip: function (req, res) {
+      return req.method === 'POST';
+    },
+  })
+);
+// Log with custom config every request that is POST
 morgan.token('body', (req, res) => JSON.stringify(req.body));
 app.use(
   morgan(
-    ':method :url :status :response-time ms - :res[content-length] :body - :req[content-length]'
+    ':method :url :status :response-time ms - :res[content-length] :body - :req[content-length]',
+    {
+      skip: function (req, res) {
+        return req.method != 'POST';
+      },
+    }
   )
 );
+
 //Api Path
 app.use('/api', apiRouter);
 app.use('/info', infoRouter);

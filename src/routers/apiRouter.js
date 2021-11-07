@@ -27,7 +27,7 @@ router.delete('/persons/:id', (req, res) => {
   if (!id || typeof id != 'number') throw errorCodes.idParamInvalid;
   //Get person
   db.persons = db.persons.filter((p) => p != getPersonByID(id));
-  res.send(`Person with id: ${id} succesfully deleted`);
+  res.json({ message: `Person with id: ${id} succesfully deleted` });
 });
 
 router.post('/persons/', (req, res) => {
@@ -40,7 +40,7 @@ router.post('/persons/', (req, res) => {
   if (valueExistsInPersons('name', name)) throw errorCodes.nameMustBeUnique;
   //Create new person and send successmessage
   db.persons.push({ id: newID, name, number });
-  res.send(`Person was added with id ${newID}`);
+  res.json({ message: `Person was added with id ${newID}` });
 });
 
 function getPersonByID(id) {

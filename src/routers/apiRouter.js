@@ -31,7 +31,16 @@ router.delete('/persons/:id', (req, res) => {
   res.send(`Person with id: ${id} succesfully deleted`);
 });
 
-router.post('/persons/', (req, res) => {});
+router.post('/persons/', (req, res) => {
+  const newID = generateRandomID();
+  const { name, number } = req.body;
+  if (!name || !number) throw errorCodes.nameOrNumberMissing;
+  const nameExists = valueExistsInPersons('name', name);
+  if (nameExists) throw errorCodes.nameMustBeUnique;
+  const person = { newID, name, number };
+  db.persons.push(person);
+  res.send(`Person was added with id ${newID}`);
+});
 
 function getPersonByID(id) {
   //Find person with same id
@@ -39,6 +48,19 @@ function getPersonByID(id) {
   //Throw error if person not found
   if (!person) throw errorCodes.personNotFound;
   return person;
+}
+
+function generateRandomID() {
+  let id;
+  do {
+    id = Math.floor(Math.random() * (99999999 - 0));
+  } while (valueExistsInPersons('id', id));
+  return id;
+}
+
+function valueExistsInPersons(param, value) {
+  const person = db.persons.find((p) => p[param] === value);
+  return !!person;
 }
 
 module.exports = router;

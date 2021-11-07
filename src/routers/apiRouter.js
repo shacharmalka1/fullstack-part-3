@@ -37,7 +37,7 @@ router.post('/persons/', (req, res) => {
   if (!name || !number) throw errorCodes.nameOrNumberMissing;
   const nameExists = valueExistsInPersons('name', name);
   if (nameExists) throw errorCodes.nameMustBeUnique;
-  const person = { newID, name, number };
+  const person = { id: newID, name, number };
   db.persons.push(person);
   res.send(`Person was added with id ${newID}`);
 });

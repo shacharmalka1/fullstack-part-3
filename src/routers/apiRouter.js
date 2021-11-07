@@ -26,8 +26,7 @@ router.delete('/persons/:id', (req, res) => {
   const id = Number(req.params.id);
   if (!id || typeof id != 'number') throw errorCodes.idParamInvalid;
   //Get person
-  const person = getPersonByID(id);
-  db.persons = db.persons.filter((p) => p != person);
+  db.persons = db.persons.filter((p) => p != getPersonByID(id));
   res.send(`Person with id: ${id} succesfully deleted`);
 });
 
@@ -38,11 +37,9 @@ router.post('/persons/', (req, res) => {
   const { name, number } = req.body;
   if (!name || !number) throw errorCodes.nameOrNumberMissing;
   //Check name is unique
-  const nameExists = valueExistsInPersons('name', name);
-  if (nameExists) throw errorCodes.nameMustBeUnique;
+  if (valueExistsInPersons('name', name)) throw errorCodes.nameMustBeUnique;
   //Create new person and send successmessage
-  const person = { id: newID, name, number };
-  db.persons.push(person);
+  db.persons.push({ id: newID, name, number });
   res.send(`Person was added with id ${newID}`);
 });
 
@@ -55,6 +52,7 @@ function getPersonByID(id) {
 }
 
 function generateRandomID() {
+  // Generate random ID
   let id;
   do {
     id = Math.floor(Math.random() * (99999999 - 0));
@@ -63,8 +61,7 @@ function generateRandomID() {
 }
 
 function valueExistsInPersons(param, value) {
-  const person = db.persons.find((p) => p[param] === value);
-  return !!person;
+  return !!db.persons.find((p) => p[param] === value);
 }
 
 module.exports = router;

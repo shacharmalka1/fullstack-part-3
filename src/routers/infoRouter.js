@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('', (req, res) => {
   // Send back new page with amount of numbers in phonebook with curr date
-  const phonebookText = `Phonebook has info for ${db.persons.length} people`; // <br/> for indentation
+  const phonebookText = `Phonebook has info for ${db.persons.length} people`;
   const time = new Date();
   const response = `
     <html>

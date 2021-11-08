@@ -13,10 +13,14 @@
       rel="stylesheet"
     />
     <title>Phonebook</title>
-  <script defer src="main.js"></script></head>
+  <script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
   <body>
-    <h1 class="d-flex justify-content-center">Phonebook!</h1>
     <div class="container">
+      <div class='row'>
+        <div class='col text-align-center'>
+          <h1 style='text-align: center;'>Phonebook!</h1>
+        </div>
+      </div>
       <div class="row">
         <div class="col d-flex justify-content-center">
           <input type="text" placeholder="search" class="search" />
@@ -40,57 +44,25 @@
       </div>
     </div>
 
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="addModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Phonebook</h5>
-            <button
-              type="button"
-              class="btn-close modalClose"
-              data-bs-dismiss="modal"
-            >
-              ✖
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="input-group">
-              <span class="input-group-text">Name and Number</span>
-              <input
-                type="text"
-                aria-label="name"
-                class="form-control name-input"
-                placeholder="Name"
-              />
-              <input
-                type="text"
-                aria-label="number"
-                class="form-control number-input"
-                placeholder="Number"
-              />
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary modalClose"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary modalAdd">
-              Add Number
-            </button>
-          </div>
+
+
+    <div id="addModal" class="custom-modal">
+      <div class="custom-modal-content">
+         <div class="custom-container"> 
+           <span class="close modalClose">&times;</span>
+         <div class="brand-logo"></div>
+         <div class="brand-title">Phone book</div>
+         <div class="inputs">
+           <label>Name</label>
+           <input type="email" placeholder="Type full name" class='name-input'/>
+           <label>Phone number</label>
+           <input type="email" placeholder="Type phone number" class='number-input'/>
+           <button type="submit" class='modalAdd'>➕Add number</button>
+         </div>
+         <a href="https://c.tenor.com/sf44fUvaTWQAAAAM/fuck-you-fuck.gif">Don't click here</a>
+         </div>
         </div>
-      </div>
+       </div>
     </div>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>

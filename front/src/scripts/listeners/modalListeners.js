@@ -3,9 +3,10 @@ import { loadTable } from '../dom/loadTable';
 
 const nameInput = document.querySelector('.name-input');
 const numberInput = document.querySelector('.number-input');
+const myModal = document.querySelector('#addModal');
 
 export function onCloseClick(event) {
-  $('#addModal').modal('hide');
+  myModal.style.display = 'none';
   clearInputs();
 }
 
@@ -15,7 +16,7 @@ export async function onAddModalClick(event) {
   const res = await addPerson(name, number);
   if (res) {
     loadTable();
-    $('#addModal').modal('hide');
+    myModal.style.display = 'none';
   }
   clearInputs();
 }

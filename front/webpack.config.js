@@ -10,7 +10,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
-  entry: './src/scripts/index.js',
+  entry: ['@babel/polyfill', './src/scripts/index.js'],
   output: {
     path: path.resolve(__dirname, '../build'),
   },

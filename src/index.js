@@ -4,8 +4,9 @@ const errorHandler = require('./middleware/errorHandler');
 const apiRouter = require('./routers/apiRouter');
 const infoRouter = require('./routers/infoRouter');
 const morgan = require('morgan');
+const path = require('path');
 //Server setup
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -30,9 +31,16 @@ app.use(
     }
   )
 );
+// view engine setup
+// app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+// setup static path
+app.use(express.static('views'));
 //Api Path
 app.use('/api', apiRouter);
 app.use('/info', infoRouter);
+//Render front page
+app.get('/', (req, res) => res.render('homepage'));
 //Setup error handler
 app.use(errorHandler);
 //Listen

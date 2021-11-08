@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css"
+      rel="stylesheet"
+    />
+    <title>Phonebook</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <h1>Phonebook!</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <input type="text" placeholder="search" />
+          <button class="add">Add Number</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="addModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Phonebook</h5>
+            <button
+              type="button"
+              class="btn-close modalClose"
+              data-bs-dismiss="modal"
+            >
+              ✖
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+              <span class="input-group-text">Name and Number</span>
+              <input
+                type="text"
+                aria-label="name"
+                class="form-control name-input"
+                placeholder="Name"
+              />
+              <input
+                type="text"
+                aria-label="number"
+                class="form-control number-input"
+                placeholder="Number"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary modalClose"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary modalAdd">
+              Add Number
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
+  </body>
+</html>

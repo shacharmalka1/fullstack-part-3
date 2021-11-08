@@ -153,11 +153,11 @@ input {
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 0.5em;
   background: #1da1f2;
   /* background: #3fd11b; */
   height: 40px;
-  border-radius: 20px;
+  border-radius: 14px;
   cursor: pointer;
   font-weight: 900;
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;

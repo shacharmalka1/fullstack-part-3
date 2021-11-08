@@ -3,7 +3,7 @@ import { getPersons } from '../api/api';
 const table = document.querySelector('tbody');
 
 export async function loadTable() {
-  while (table.firstChild) table.removeChild(table.firstChild);
+  table.innerHTML = ''
   const res = await getPersons();
   const persons = res.data;
   let i = 0;
@@ -14,7 +14,7 @@ export async function loadTable() {
   }
 }
 
-function createTableRow(person, count) {
+export function createTableRow(person, count) {
   //Create table row
   const row = document.createElement('tr');
   const head = document.createElement('th');

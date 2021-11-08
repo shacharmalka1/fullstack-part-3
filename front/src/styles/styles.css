@@ -184,3 +184,15 @@ a {
 a:hover {
   background: rgb(199, 195, 195);
 }
+
+#button {
+  border-radius: 14px;
+  background-color: #1da1f2 !important;
+  color: white;
+}
+
+.col > h1 {
+  text-shadow: 2px 0 lightgray, -2px 0 lightgray, 0 2px lightgray,
+    0 -2px lightgray, 1px 1px lightgray, -1px -1px lightgray, -1px 1px grey,
+    1px -1px grey;
+}

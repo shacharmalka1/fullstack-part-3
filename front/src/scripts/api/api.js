@@ -7,7 +7,8 @@ export async function getPersons() {
     const res = axios.get(`${baseURL}/api/persons`);
     return res;
   } catch (error) {
-    alert(error);
+    if (error.response) alert(error.response.data.error);
+    else alert(error);
   }
 }
 
@@ -16,6 +17,17 @@ export async function deletePerson(id) {
     const res = axios.delete(`${baseURL}/api/persons/${id}`);
     return res;
   } catch (error) {
-    alert(error);
+    if (error.response) alert(error.response.data.error);
+    else alert(error);
+  }
+}
+
+export async function addPerson(name, number) {
+  try {
+    const res = await axios.post(`${baseURL}/api/persons/`, { name, number });
+    return res;
+  } catch (error) {
+    if (error.response) alert(error.response.data.error);
+    else alert(error);
   }
 }

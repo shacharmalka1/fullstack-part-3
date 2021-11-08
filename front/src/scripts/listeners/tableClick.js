@@ -6,7 +6,7 @@ export async function onTableClick(event) {
     const id = event.target.dataset.id;
     const res = await deletePerson(id);
     if (res) {
-      alert('Deleted!');
+      // alert('Deleted!');
       loadTable();
     }
   }

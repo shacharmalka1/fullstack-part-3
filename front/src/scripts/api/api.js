@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const baseURL = 'http://localHost:3001';
+// const baseURL = 'http://localHost:3001';
+const baseURL = 'https://phonebookamir.herokuapp.com/';
 
 export async function getPersons() {
   try {

@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const errorHandler = require('./middleware/errorHandler');
 const apiRouter = require('./routers/apiRouter');
 const infoRouter = require('./routers/infoRouter');
 const morgan = require('morgan');
-const path = require('path');
+const db = require('./data/db');
 //Server setup
 const port = process.env.PORT || 3001;
 const app = express();
@@ -31,16 +32,15 @@ app.use(
     }
   )
 );
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 // setup static path
-app.use(express.static('views'));
+app.use(express.static(path.join(__dirname, '../build/')));
 //Api Path
 app.use('/api', apiRouter);
 app.use('/info', infoRouter);
 //Render front page
-app.get('/', (req, res) => res.render('homepage'));
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+);
 //Setup error handler
 app.use(errorHandler);
 //Listen

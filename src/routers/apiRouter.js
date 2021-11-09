@@ -42,7 +42,9 @@ router.post('/persons/', async (req, res, next) => {
     if (!name || !number) throw errorCodes.nameOrNumberMissing;
     //Add new person
     const person = await mongoDB.addPerson(name, number, newID);
-    if (!person) throw errorCodes.nameMustBeUnique;
+    if (!person) throw errorCodes.nameAndNumberMustBeUnique;
+    if (person === errorCodes.notValidMobileNumber)
+      throw errorCodes.notValidMobileNumber;
     res.json({ message: `Person was added with id ${newID}` });
   } catch (error) {
     next(error);

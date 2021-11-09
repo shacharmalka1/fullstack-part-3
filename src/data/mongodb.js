@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
+const errorCodes = require('../constants/errorCodes');
 const uri = `mongodb+srv://amirmongo:${process.env.PASSWORD}@cluster0.usl1e.mongodb.net/phonebook?retryWrites=true&w=majority`;
-
 const personScheme = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
   number: {
     type: String,
     required: true,
+    unique: true,
   },
   id: {
     type: Number,
@@ -20,7 +22,6 @@ const personScheme = new mongoose.Schema({
 const Person = mongoose.model('persons', personScheme);
 
 function init() {
-  console.log(uri);
   mongoose
     .connect(uri, {
       useNewUrlParser: true,
@@ -30,14 +31,13 @@ function init() {
       console.log('connected to database successfully');
     })
     .catch((error) => {
-      console.log(error);
       console.log('connection to database failed');
     });
 }
 
 async function addPerson(name, number, id) {
   try {
-    // if (await checkName(name)) return false;
+    if (!validatePhoneNumber(number)) return errorCodes.notValidMobileNumber;
     const newPerson = new Person({ name, number, id });
     const res = await newPerson.save();
     return res;
@@ -71,6 +71,10 @@ async function deletePersonByID(id) {
   }
 }
 
+function validatePhoneNumber(input_str) {
+  const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+  return re.test(input_str);
+}
 // module.exports = mongoose.model('ShortUrl', shortUrlSchema);
 
 module.exports = {

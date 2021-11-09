@@ -9,7 +9,11 @@ const errorCodes = {
     code: 404,
   },
   nameOrNumberMissing: { message: 'The name or number is missing', code: 400 },
-  nameMustBeUnique: { message: 'Name must be unique', code: 400 },
+  nameAndNumberMustBeUnique: {
+    message: 'Name and Number must be unique',
+    code: 400,
+  },
+  notValidMobileNumber: { message: 'Mobile number must be valid', code: 404 },
 };
 
 module.exports = errorCodes;

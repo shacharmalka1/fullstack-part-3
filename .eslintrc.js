@@ -1,14 +1,22 @@
 module.exports = {
   env: {
     commonjs: true,
-    es2021: true,
     node: true,
   },
-  extends: ['airbnb-base', 'prettier'],
+  extends: 'eslint:recommended',
   parserOptions: {
-    ecmaVersion: 13,
+    ecmaVersion: 12,
   },
+  ignorePatterns: ['/build', '/front'],
   rules: {
-    'javascript.suggestionActions.enabled': false,
+    indent: ['error', 2],
+    'linebreak-style': 0, //Changed to windows instead of unix
+    quotes: ['error', 'single'],
+    semi: ['error', 'never'],
+    eqeqeq: 'error',
+    'no-trailing-spaces': 'error',
+    'object-curly-spacing': ['error', 'always'],
+    'arrow-spacing': ['error', { before: true, after: true }],
+    'no-console': 0,
   },
-};
+}

@@ -18,6 +18,6 @@ const errorCodes = {
     message: 'Validation error - name must be more than 3 letters',
     code: 400,
   },
-};
+}
 
-module.exports = errorCodes;
+module.exports = errorCodes

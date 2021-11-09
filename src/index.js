@@ -6,11 +6,15 @@ const apiRouter = require('./routers/apiRouter');
 const infoRouter = require('./routers/infoRouter');
 const morgan = require('morgan');
 const db = require('./data/db');
+require('dotenv').config();
+const mongoDB = require('./data/mongodb');
 //Server setup
 const port = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 app.use(express.json());
+//DB Setup
+mongoDB.init();
 //Morgan config
 //Log with tiny config every request other than POST
 app.use(

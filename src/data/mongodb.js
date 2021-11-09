@@ -92,7 +92,6 @@ function validatePhoneNumber(input_str) {
   const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
   return re.test(input_str)
 }
-// module.exports = mongoose.model('ShortUrl', shortUrlSchema);
 
 module.exports = {
   init,

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const errorCodes = require('../constants/errorCodes')
-const uri = `mongodb+srv://amirmongo:${process.env.PASSWORD}@cluster0.usl1e.mongodb.net/phonebook?retryWrites=true&w=majority`
+const uri = `mongodb+srv://shachar:${process.env.PASSWORD}@cluster0.oriwg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+
 const personScheme = new mongoose.Schema({
   name: {
     type: String,

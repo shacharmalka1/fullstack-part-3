@@ -7,16 +7,8 @@
   \*****************************************************************************/
 body {
   font-family: Poppins, sans-serif;
-  /* margin: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #ecf0f3;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  place-items: center;
-  overflow: hidden; */
+  background-color: var(--font-color);
+  transition: 2s;
   font-family: poppins;
 }
 
@@ -75,7 +67,7 @@ body {
 /* The Close Button */
 .close {
   font-family: Arial, Helvetica, sans-serif;
-  color: black;
+  color: var(--color-title);
   float: right;
   font-size: 50px;
   font-weight: bold;
@@ -96,7 +88,7 @@ body {
   border-radius: 20px;
   padding: 40px;
   box-sizing: border-box;
-  background: #ecf0f3;
+  background: var(--color-table);
 }
 
 .brand-logo {
@@ -108,14 +100,15 @@ body {
   margin: auto;
   border-radius: 50%;
   box-sizing: border-box;
-  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  box-shadow: 7px 7px 10px var(--color-table), -7px -7px 10px var(--color-table);
 }
 
 .brand-title {
+  text-align: center;
   margin-top: 10px;
   font-weight: 900;
   font-size: 1.8rem;
-  color: #1da1f2;
+  color: var(--color-buttons);
   letter-spacing: 1px;
 }
 
@@ -147,30 +140,36 @@ input::placeholder {
   color: gray;
 }
 
+.border-input {
+  border-radius: 16px;
+}
+
 input {
   background: #ecf0f3;
   padding: 10px;
   padding-left: 20px;
   height: 50px;
   font-size: 14px;
+  border: 44px solid black;
   border-radius: 50px;
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
 
 button {
   margin-top: 0.5em;
-  background: #1da1f2;
+  background: var(--color-buttons);
   /* background: #3fd11b; */
   height: 40px;
   border-radius: 14px;
   cursor: pointer;
   font-weight: 900;
-  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  box-shadow: 6px 6px 6px var(--color-shadow), -6px -6px 6px var(--color-shadow);
   transition: 0.5s;
 }
 
 button:hover {
   box-shadow: none;
+  background: var(--color-hover);
 }
 
 a {
@@ -179,26 +178,66 @@ a {
   bottom: 4px;
   right: 4px;
   text-decoration: none;
-  color: black;
-  /* background: #1DA1F2; */
-  background: white;
+  color: var(--color-title);
+  /* background: var(--color-buttons); */
+  background: var(--color-table);
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid var(--color-title);
   padding: 2px;
 }
 a:hover {
-  background: rgb(199, 195, 195);
+  background: var(--color-hover);
 }
 
 #button {
   border-radius: 14px;
-  background-color: #1da1f2 !important;
-  color: white;
+  background-color: var(--color-buttons) !important;
+  color: var(--color-table);
 }
 
 .col > h1 {
-  text-shadow: 2px 0 lightgray, -2px 0 lightgray, 0 2px lightgray,
-    0 -2px lightgray, 1px 1px lightgray, -1px -1px lightgray, -1px 1px grey,
-    1px -1px grey;
+  text-shadow: 2px 0 var(--color-title), -2px 0 var(--color-title),
+    0 2px var(--color-title), 0 -2px var(--color-title),
+    1px 1px var(--color-title), -1px -1px var(--color-title),
+    -1px 1px var(--color-title), 1px -1px var(--color-title);
+  font-size: 4rem;
+  color: var(--color-buttons);
+}
+
+th,
+td {
+  color: var(--color-table);
+}
+
+h4 {
+  text-decoration: underline;
+  color: var(--color-chooseTheme);
+}
+#theme {
+  color: var(--color-title);
+  background-color: var(--font-color);
+  border-radius: 6px;
+}
+.theme-light {
+  --color-title: rgb(22, 18, 18);
+  --color-table: black;
+  --color-hover: #74c3f5;
+  --color-buttons: #1da1f2;
+  --font-color: white;
+}
+.theme-dark {
+  --color-title: white;
+  --color-table: white;
+  --color-buttons: #1da1f2;
+  --color-hover: rgba(221, 218, 218, 0.842);
+  --color-shadow: black;
+  --color-chooseTheme: white;
+  --font-color: black;
+}
+.theme-freestyle {
+  --color-title: red;
+  --color-table: green;
+  --color-buttons: yellow;
+  --font-color: wheat;
 }
 

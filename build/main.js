@@ -3497,6 +3497,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/scripts/dom/changeStyleMode.js":
+/*!********************************************!*\
+  !*** ./src/scripts/dom/changeStyleMode.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"setTheme\": () => (/* binding */ setTheme)\n/* harmony export */ });\ndocument.documentElement.className = 'theme-light';\nfunction setTheme() {\n  //get theme from selector.\n  //set it to the page\n  //send it to local storege.\n  console.log('Style changed');\n  var themeName = document.getElementById('theme').value;\n  document.documentElement.className = themeName;\n}\n\n//# sourceURL=webpack://my-webpack-project/./src/scripts/dom/changeStyleMode.js?");
+
+/***/ }),
+
 /***/ "./src/scripts/dom/loadTable.js":
 /*!**************************************!*\
   !*** ./src/scripts/dom/loadTable.js ***!
@@ -3537,7 +3548,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"listen\": () => (/* binding */ listen)\n/* harmony export */ });\n/* harmony import */ var _addClick__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addClick */ \"./src/scripts/listeners/addClick.js\");\n/* harmony import */ var _modalListeners__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modalListeners */ \"./src/scripts/listeners/modalListeners.js\");\n/* harmony import */ var _searchChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./searchChange */ \"./src/scripts/listeners/searchChange.js\");\n/* harmony import */ var _tableClick__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tableClick */ \"./src/scripts/listeners/tableClick.js\");\n\n\n\n\nvar table = document.querySelector('tbody');\nvar addButton = document.querySelector('.add');\nvar closeModal = document.querySelector('.modalClose');\nvar addModal = document.querySelector('.modalAdd');\nvar search = document.querySelector('.search');\nfunction listen() {\n  table.addEventListener('click', _tableClick__WEBPACK_IMPORTED_MODULE_3__.onTableClick);\n  addButton.addEventListener('click', _addClick__WEBPACK_IMPORTED_MODULE_0__.onAddClick);\n  closeModal.addEventListener('click', _modalListeners__WEBPACK_IMPORTED_MODULE_1__.onCloseClick);\n  addModal.addEventListener('click', _modalListeners__WEBPACK_IMPORTED_MODULE_1__.onAddModalClick);\n  search.addEventListener('input', _searchChange__WEBPACK_IMPORTED_MODULE_2__.onSearchInput);\n}\n\n//# sourceURL=webpack://my-webpack-project/./src/scripts/listeners/listeners.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"listen\": () => (/* binding */ listen)\n/* harmony export */ });\n/* harmony import */ var _addClick__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addClick */ \"./src/scripts/listeners/addClick.js\");\n/* harmony import */ var _modalListeners__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modalListeners */ \"./src/scripts/listeners/modalListeners.js\");\n/* harmony import */ var _searchChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./searchChange */ \"./src/scripts/listeners/searchChange.js\");\n/* harmony import */ var _tableClick__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tableClick */ \"./src/scripts/listeners/tableClick.js\");\n/* harmony import */ var _dom_changeStyleMode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dom/changeStyleMode */ \"./src/scripts/dom/changeStyleMode.js\");\n\n\n\n\n\nvar table = document.querySelector('tbody');\nvar addButton = document.querySelector('.add');\nvar closeModal = document.querySelector('.modalClose');\nvar addModal = document.querySelector('.modalAdd');\nvar search = document.querySelector('.search');\nvar theme = document.querySelector('#theme');\nfunction listen() {\n  table.addEventListener('click', _tableClick__WEBPACK_IMPORTED_MODULE_3__.onTableClick);\n  addButton.addEventListener('click', _addClick__WEBPACK_IMPORTED_MODULE_0__.onAddClick);\n  closeModal.addEventListener('click', _modalListeners__WEBPACK_IMPORTED_MODULE_1__.onCloseClick);\n  addModal.addEventListener('click', _modalListeners__WEBPACK_IMPORTED_MODULE_1__.onAddModalClick);\n  search.addEventListener('input', _searchChange__WEBPACK_IMPORTED_MODULE_2__.onSearchInput);\n  theme.addEventListener('change', _dom_changeStyleMode__WEBPACK_IMPORTED_MODULE_4__.setTheme);\n}\n\n//# sourceURL=webpack://my-webpack-project/./src/scripts/listeners/listeners.js?");
 
 /***/ }),
 

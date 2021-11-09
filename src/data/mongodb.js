@@ -28,7 +28,6 @@ function init() {
     })
     .then(async () => {
       console.log('connected to database successfully');
-      console.log(addPerson('Amir', '2432242', 7));
     })
     .catch((error) => {
       console.log(error);
@@ -37,9 +36,35 @@ function init() {
 }
 
 async function addPerson(name, number, id) {
-  const newPerson = new Person({ name, number, id });
   try {
+    // if (await checkName(name)) return false;
+    const newPerson = new Person({ name, number, id });
     const res = await newPerson.save();
+    return res;
+  } catch (error) {
+    return false;
+  }
+}
+
+async function getAllPeople() {
+  const persons = await Person.find();
+  return persons;
+}
+
+async function getPersonByID(id) {
+  try {
+    const person = await Person.find({ id });
+    if (person.length === 0) return false;
+    return person[0];
+  } catch (error) {
+    return false;
+  }
+}
+
+async function deletePersonByID(id) {
+  try {
+    const res = await Person.deleteOne({ id });
+    if (res.deletedCount === 0) return false;
     return res;
   } catch (error) {
     return false;
@@ -48,4 +73,10 @@ async function addPerson(name, number, id) {
 
 // module.exports = mongoose.model('ShortUrl', shortUrlSchema);
 
-module.exports = { init };
+module.exports = {
+  init,
+  getPersonByID,
+  getAllPeople,
+  addPerson,
+  deletePersonByID,
+};

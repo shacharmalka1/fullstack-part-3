@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -6,7 +7,6 @@ const apiRouter = require('./routers/apiRouter');
 const infoRouter = require('./routers/infoRouter');
 const morgan = require('morgan');
 const db = require('./data/db');
-require('dotenv').config();
 const mongoDB = require('./data/mongodb');
 //Server setup
 const port = process.env.PORT || 3001;

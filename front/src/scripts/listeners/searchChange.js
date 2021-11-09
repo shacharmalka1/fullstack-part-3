@@ -20,3 +20,4 @@ function hideRows(searchQuery) {
     // row.hidden
   }
 }
+

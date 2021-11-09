@@ -15,7 +15,9 @@ export function listen() {
   table.addEventListener('click', onTableClick);
   table.addEventListener('dblclick', onTableDBLClick);
   addButton.addEventListener('click', onAddClick);
+
   closeModal.addEventListener('click', onCloseClick);
+
   addModal.addEventListener('click', onAddModalClick);
   search.addEventListener('input', onSearchInput);
   theme.addEventListener('change', setTheme);

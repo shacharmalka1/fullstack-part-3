@@ -198,7 +198,9 @@ a:hover {
   font-size: 4rem;
   color: var(--color-buttons);
 }
-
+th {
+  font-weight: bold !important;
+}
 th,
 td {
   color: var(--color-table);

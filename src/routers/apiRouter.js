@@ -33,6 +33,25 @@ router.delete('/persons/:id', async (req, res) => {
   res.json({ message });
 });
 
+router.put('/persons/:id', async (req, res, next) => {
+  try {
+    //Get id param and check validity
+    const id = Number(req.params.id);
+    if (!id || typeof id != 'number') throw errorCodes.idParamInvalid;
+    //Extract name and number and check validity
+    const { number } = req.body;
+    if (!number) throw errorCodes.nameOrNumberMissing;
+    // Request edit
+    const person = await mongoDB.editNumberByID(id, number);
+    if (!person) throw errorCodes.validationError;
+    if (person === errorCodes.notValidMobileNumber)
+      throw errorCodes.notValidMobileNumber;
+    res.json({ message: `Person was added with nae number ${number}` });
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post('/persons/', async (req, res, next) => {
   try {
     //Generate new unique ID
@@ -45,6 +64,8 @@ router.post('/persons/', async (req, res, next) => {
     if (!person) throw errorCodes.nameAndNumberMustBeUnique;
     if (person === errorCodes.notValidMobileNumber)
       throw errorCodes.notValidMobileNumber;
+    else if (person === errorCodes.validationError)
+      throw errorCodes.validationError;
     res.json({ message: `Person was added with id ${newID}` });
   } catch (error) {
     next(error);

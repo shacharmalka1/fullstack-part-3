@@ -6,6 +6,7 @@ const personScheme = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    minlength: 3,
   },
   number: {
     type: String,
@@ -42,6 +43,8 @@ async function addPerson(name, number, id) {
     const res = await newPerson.save();
     return res;
   } catch (error) {
+    if (error._message === 'persons validation failed')
+      return errorCodes.validationError;
     return false;
   }
 }
@@ -71,7 +74,24 @@ async function deletePersonByID(id) {
   }
 }
 
+async function editNumberByID(id, number) {
+  try {
+    if (!validatePhoneNumber(number)) return errorCodes.notValidMobileNumber;
+    const res = await Person.findOneAndUpdate(
+      { id },
+      { number },
+      { new: true }
+    );
+    return res;
+  } catch (error) {
+    return false;
+  }
+}
+
 function validatePhoneNumber(input_str) {
+  // We completely understand what the next line does
+  // Wake us up at 3 am and we will tell you (only at 3 am)
+  // (Totally not take from stackoverflow)
   const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
   return re.test(input_str);
 }
@@ -83,4 +103,5 @@ module.exports = {
   getAllPeople,
   addPerson,
   deletePersonByID,
+  editNumberByID,
 };

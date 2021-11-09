@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const baseURL = 'http://localHost:3001';
-const baseURL = 'https://phonebookamir.herokuapp.com';
+const baseURL = 'http://localHost:3001';
+// const baseURL = 'https://phonebookamir.herokuapp.com';
 
 const niceAlert = (textVal) => {
   Swal.fire({
@@ -34,6 +34,16 @@ export async function deletePerson(id) {
 export async function addPerson(name, number) {
   try {
     const res = await axios.post(`${baseURL}/api/persons/`, { name, number });
+    return res;
+  } catch (error) {
+    if (error.response) niceAlert(error.response.data.error);
+    else niceAlert(error);
+  }
+}
+
+export async function editNumber(id, number) {
+  try {
+    const res = await axios.put(`${baseURL}/api/persons/${id}`, { number });
     return res;
   } catch (error) {
     if (error.response) niceAlert(error.response.data.error);

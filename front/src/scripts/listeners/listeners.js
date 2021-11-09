@@ -1,7 +1,7 @@
 import { onAddClick } from './addClick';
 import { onCloseClick, onAddModalClick } from './modalListeners';
 import { onSearchInput } from './searchChange';
-import { onTableClick } from './tableClick';
+import { onTableClick, onTableDBLClick } from './tableClick';
 import { setTheme } from '../dom/changeStyleMode';
 
 const table = document.querySelector('tbody');
@@ -13,6 +13,7 @@ const theme = document.querySelector('#theme');
 
 export function listen() {
   table.addEventListener('click', onTableClick);
+  table.addEventListener('dblclick', onTableDBLClick);
   addButton.addEventListener('click', onAddClick);
   closeModal.addEventListener('click', onCloseClick);
   addModal.addEventListener('click', onAddModalClick);

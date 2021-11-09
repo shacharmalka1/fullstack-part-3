@@ -14,6 +14,10 @@ const errorCodes = {
     code: 400,
   },
   notValidMobileNumber: { message: 'Mobile number must be valid', code: 404 },
+  validationError: {
+    message: 'Validation error - name must be more than 3 letters',
+    code: 400,
+  },
 };
 
 module.exports = errorCodes;

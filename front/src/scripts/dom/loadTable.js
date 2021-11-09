@@ -26,6 +26,7 @@ function createTableRow(person, count) {
   head.innerText = count;
   name.innerText = person.name;
   number.innerText = person.number;
+  number.setAttribute('class', 'number');
   deleteBtn.classList.add('delete');
   deleteBtn.innerText = '❌';
   deleteBtn.dataset.id = person.id;

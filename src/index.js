@@ -6,7 +6,6 @@ const errorHandler = require('./middleware/errorHandler');
 const apiRouter = require('./routers/apiRouter');
 const infoRouter = require('./routers/infoRouter');
 const morgan = require('morgan');
-const db = require('./data/db');
 const mongoDB = require('./data/mongodb');
 //Server setup
 const port = process.env.PORT || 3001;
